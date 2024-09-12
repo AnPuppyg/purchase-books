@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物品总价计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .item {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>物品总价计算器</h1>
+        <div class="item">
+            <label for="item1Price">物品1 单价:</label>
+            <input type="number" id="item1Price" placeholder="单价" step="0.01">
+            <label for="item1Quantity">物品1 数量:</label>
+            <input type="number" id="item1Quantity" placeholder="数量" step="1">
+        </div>
+        <div class="item">
+            <label for="item2Price">物品2 单价:</label>
+            <input type="number" id="item2Price" placeholder="单价" step="0.01">
+            <label for="item2Quantity">物品2 数量:</label>
+            <input type="number" id="item2Quantity" placeholder="数量" step="1">
+        </div>
+        <div class="item">
+            <label for="item3Price">物品3 单价:</label>
+            <input type="number" id="item3Price" placeholder="单价" step="0.01">
+            <label for="item3Quantity">物品3 数量:</label>
+            <input type="number" id="item3Quantity" placeholder="数量" step="1">
+        </div>
+        <button onclick="calculateTotal()">计算总价</button>
+        <div class="total">
+            总价: <span id="totalPrice">0</span> 元
+        </div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            // 获取输入值
+            var item1Price = parseFloat(document.getElementById('item1Price').value) || 0;
+            var item1Quantity = parseFloat(document.getElementById('item1Quantity').value) || 0;
+            var item2Price = parseFloat(document.getElementById('item2Price').value) || 0;
+            var item2Quantity = parseFloat(document.getElementById('item2Quantity').value) || 0;
+            var item3Price = parseFloat(document.getElementById('item3Price').value) || 0;
+            var item3Quantity = parseFloat(document.getElementById('item3Quantity').value) || 0;
+
+            // 计算总价
+            var total = (item1Price * item1Quantity) + (item2Price * item2Quantity) + (item3Price * item3Quantity);
+
+            // 显示总价
+            document.getElementById('totalPrice').innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
